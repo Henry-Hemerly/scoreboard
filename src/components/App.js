@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Header from './Header';
 import Player from './Player';
+import AddPlayerForm from './AddPlayerForm';
 
 class App extends Component {
   state = {
@@ -61,11 +62,10 @@ class App extends Component {
       <div className="scoreboard">
         <Header 
           title="Scoreboard" 
-          totalPlayers={this.state.players.length}   
+          players={this.state.players}   
         />  
   
-        {this.state.players.map( (player, index) => {  
-          return (
+        {this.state.players.map( (player, index) =>   
             <Player 
               score={player.score}
               removePlayer={this.handleHemovePlayer}
@@ -75,8 +75,8 @@ class App extends Component {
               changeScore={this.handleScoreChange}
               key={player.id.toString()} 
             />
-          )
-        })} 
+        )} 
+        <AddPlayerForm />
       </div>
     );
   }
