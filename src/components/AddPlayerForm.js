@@ -12,10 +12,18 @@ class AddPlayerForm extends Component {
     })
   }
 
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.addPlayer(this.state.value);
+    this.setState({
+      value: ''
+    });
+  }
+
   render () {
     console.log(this.state.value);
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <input 
           type="text" 
           value={this.state.value}
