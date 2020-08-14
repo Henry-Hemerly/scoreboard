@@ -62,6 +62,7 @@ class Timer extends Component {
         <button onClick={this.handleTimer}>{this.state.isRunning ? 'Stop' : 'Start'}</button>
         <button onClick={this.handleReset}>Reset</button>
       </div>
+      
     );
   }
 }
