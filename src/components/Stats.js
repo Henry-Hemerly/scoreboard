@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Stats = props => {
+const Stats = (props) => {
   const totalPlayers = props.players.length;
   const totalPoints = props.players.reduce((total, player) => {
     return total + player.score;
@@ -18,9 +18,8 @@ const Stats = props => {
           <td>Total Points:</td>
           <td>{totalPoints}</td>
         </tr>
-    </tbody>
-</table>
-
+      </tbody>
+    </table>
   );
 }
 

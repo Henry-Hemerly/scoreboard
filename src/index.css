@@ -255,3 +255,16 @@ input[type=submit]:hover {
   font-size: 2em;
   line-height: 2em;
 }
+
+.svg {
+  width: 28px;
+  height: 19px;
+  margin-right: 5px;
+  fill: #F0F0F0;
+}
+
+.is-high-score {
+  fill: #FFC657;
+  animation: grow 0.5s ease-in-out;
+  transform-origin: 50% 50%;
+}
