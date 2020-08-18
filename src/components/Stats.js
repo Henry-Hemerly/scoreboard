@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Stats = props => {
   const totalPlayers = props.players.length;
@@ -22,5 +23,11 @@ const Stats = props => {
 
   );
 }
+
+Stats.propTypes = {
+  players: PropTypes.arrayOf(PropTypes.shape({
+    score: PropTypes.number
+  }))
+};
 
 export default Stats;
