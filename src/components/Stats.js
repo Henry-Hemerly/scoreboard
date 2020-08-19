@@ -6,6 +6,21 @@ const Stats = (props) => {
   const totalPoints = props.players.reduce((total, player) => {
     return total + player.score;
   }, 0);
+  const leader = () => {
+    const highscorers = [];
+    let highscore = 0;
+    for (let i = 0; i < props.players.length; i++) {
+      if (props.players[i].score >= highscore) {
+        highscore = props.players.score;
+      }
+    }
+    for (let i = 0; i < props.players.length; i++) {
+      if (props.players[i].score === highscore) {
+         highscorers.push(props.players[i]);
+      }
+    }
+    return highscorers;
+  }
 
   return (
     <table className="stats">

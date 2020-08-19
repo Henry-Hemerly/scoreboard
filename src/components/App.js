@@ -74,6 +74,10 @@ class App extends Component {
     });
   }
 
+  handleHighscorer = highschorerArray => {
+    
+  }
+
   render() {
     return (
       <div className="scoreboard">
@@ -91,6 +95,7 @@ class App extends Component {
               name={player.name} 
               changeScore={this.handleScoreChange}
               key={player.id.toString()} 
+              isHighscorer={this.handleHighscorer}
             />
         )} 
         <AddPlayerForm addPlayer={this.handleAddPlayer}/>
