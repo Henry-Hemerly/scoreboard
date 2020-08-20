@@ -1,41 +1,50 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-const Stats = (props) => {
-  const totalPlayers = props.players.length;
-  const totalPoints = props.players.reduce((total, player) => {
+class Stats extends Component {
+  totalPlayers = this.props.players.length;
+  totalPoints = this.props.players.reduce((total, player) => {
     return total + player.score;
   }, 0);
-  const leader = () => {
+
+  handleLeaders = () => { 
     const highscorers = [];
     let highscore = 0;
-    for (let i = 0; i < props.players.length; i++) {
-      if (props.players[i].score >= highscore) {
-        highscore = props.players.score;
+    for (let i = 0; i < this.props.players.length; i++) {
+      console.log(this.props.players[i].score, 'SCORE');
+      if (this.props.players[i].score >= highscore) {
+        highscore = this.props.players.score;
       }
     }
-    for (let i = 0; i < props.players.length; i++) {
-      if (props.players[i].score === highscore) {
-         highscorers.push(props.players[i]);
+    for (let i = 0; i < this.props.players.length; i++) {
+      if (this.props.players[i].score === highscore) {
+          highscorers.push(this.props.players[i]);
       }
     }
-    return highscorers;
+    this.props.highscore(highscorers);
+    console.log(highscorers);
   }
 
-  return (
-    <table className="stats">
-      <tbody>
-        <tr>
-          <td>Players:</td>
-          <td>{totalPlayers}</td>
-        </tr>
-        <tr>
-          <td>Total Points:</td>
-          <td>{totalPoints}</td>
-        </tr>
-      </tbody>
-    </table>
-  );
+  componentDidMount = async () => {
+    this.handleLeaders();
+  }  
+  
+  render() {
+    return (
+      <table className="stats">
+        <tbody>
+          <tr>
+            <td>Players:</td>
+            <td>{this.totalPlayers}</td>
+          </tr>
+          <tr>
+            <td>Total Points:</td>
+            <td>{this.totalPoints}</td>
+          </tr>
+        </tbody>
+      </table>
+    );
+  }
 }
 
 Stats.propTypes = {

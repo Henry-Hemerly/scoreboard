@@ -6,6 +6,7 @@ import AddPlayerForm from './AddPlayerForm';
 
 class App extends Component {
   state = {
+    highscorers: [],
     players: [
       {
         name: 'Jerry',
@@ -74,8 +75,10 @@ class App extends Component {
     });
   }
 
-  handleHighscorer = highschorerArray => {
-    
+  handleHighscorer = highschorersArray => {
+    this.setState({
+      highschorers: highschorersArray
+    })
   }
 
   render() {
@@ -83,7 +86,8 @@ class App extends Component {
       <div className="scoreboard">
         <Header 
           title="Scoreboard" 
-          players={this.state.players}   
+          players={this.state.players}
+          highscore={this.handleHighscorer}   
         />  
   
         {this.state.players.map( (player, index) =>   
@@ -95,7 +99,7 @@ class App extends Component {
               name={player.name} 
               changeScore={this.handleScoreChange}
               key={player.id.toString()} 
-              isHighscorer={this.handleHighscorer}
+              isHighscorer={this.state.highscorers}
             />
         )} 
         <AddPlayerForm addPlayer={this.handleAddPlayer}/>
