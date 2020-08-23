@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Crown = props => {
   return (
@@ -8,5 +9,10 @@ const Crown = props => {
     </svg>
   )
 }
+
+Crown.propTypes = {
+  isHighScore: PropTypes.bool
+};
+
 
 export default Crown;

@@ -8,7 +8,6 @@ const Stats = props => {
     return total + player.score;
   }, 0);
 
-
   return (
     <table className="stats">
       <tbody>
