@@ -7,12 +7,12 @@ class Header extends Component {
   render () {
     const {
       players,
-      title
+      title,
     } = this.props;
 
     return (
       <header>
-        <Stats players={players} highscore={this.props.highscore}/>
+        <Stats players={players} />
         <h1>{title}</h1>
         <Timer />
       </header>

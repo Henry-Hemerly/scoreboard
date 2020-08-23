@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import Header from './Header';
 import Player from './Player';
 import AddPlayerForm from './AddPlayerForm';
@@ -75,19 +74,22 @@ class App extends Component {
     });
   }
 
-  handleHighscorer = highschorersArray => {
-    this.setState({
-      highschorers: highschorersArray
-    })
+  handleHighscorer = () => {
+    const scores = this.state.players.map( p => p.score );
+    const highScore = Math.max(...scores);
+    if (highScore) {
+      return highScore;
+    } 
+    return null;
   }
 
   render() {
+    const highscore = this.handleHighscorer();
     return (
       <div className="scoreboard">
         <Header 
           title="Scoreboard" 
-          players={this.state.players}
-          highscore={this.handleHighscorer}   
+          players={this.state.players}  
         />  
   
         {this.state.players.map( (player, index) =>   
@@ -99,7 +101,7 @@ class App extends Component {
               name={player.name} 
               changeScore={this.handleScoreChange}
               key={player.id.toString()} 
-              isHighscorer={this.state.highscorers}
+              isHighscorer={highscore === player.score}
             />
         )} 
         <AddPlayerForm addPlayer={this.handleAddPlayer}/>
@@ -107,10 +109,5 @@ class App extends Component {
     );
   }
 }
-
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
 
 export default App;

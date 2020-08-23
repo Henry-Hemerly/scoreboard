@@ -256,7 +256,7 @@ input[type=submit]:hover {
   line-height: 2em;
 }
 
-.svg {
+svg {
   width: 28px;
   height: 19px;
   margin-right: 5px;
