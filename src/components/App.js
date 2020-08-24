@@ -82,6 +82,7 @@ class App extends Component {
     } 
     return null;
   }
+  
 
   render() {
     const highscore = this.handleHighscorer();
