@@ -4,7 +4,6 @@ import Crown from './Crown';
 
 class Player extends PureComponent {
   render() {
-    
     const { 
       name,
       id,
